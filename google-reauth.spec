@@ -4,7 +4,7 @@
 #
 Name     : google-reauth
 Version  : 0.1.0
-Release  : 3
+Release  : 4
 URL      : https://files.pythonhosted.org/packages/88/a9/68e764f071560fc947ce23944b10b2d7e8dc4ae0cf853565ef4e1e47f69e/google-reauth-0.1.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/88/a9/68e764f071560fc947ce23944b10b2d7e8dc4ae0cf853565ef4e1e47f69e/google-reauth-0.1.0.tar.gz
 Summary  : Google Reauth Library
@@ -14,6 +14,7 @@ Requires: google-reauth-license = %{version}-%{release}
 Requires: google-reauth-python = %{version}-%{release}
 Requires: google-reauth-python3 = %{version}-%{release}
 Requires: oauth2client
+Requires: pyu2f
 BuildRequires : buildreq-distutils3
 
 %description
@@ -58,7 +59,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1546097388
+export SOURCE_DATE_EPOCH=1546109112
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
