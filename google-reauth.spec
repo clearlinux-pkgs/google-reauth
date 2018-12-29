@@ -4,15 +4,15 @@
 #
 Name     : google-reauth
 Version  : 0.1.0
-Release  : 2
+Release  : 3
 URL      : https://files.pythonhosted.org/packages/88/a9/68e764f071560fc947ce23944b10b2d7e8dc4ae0cf853565ef4e1e47f69e/google-reauth-0.1.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/88/a9/68e764f071560fc947ce23944b10b2d7e8dc4ae0cf853565ef4e1e47f69e/google-reauth-0.1.0.tar.gz
 Summary  : Google Reauth Library
 Group    : Development/Tools
 License  : Apache-2.0
-Requires: google-reauth-python3
-Requires: google-reauth-license
-Requires: google-reauth-python
+Requires: google-reauth-license = %{version}-%{release}
+Requires: google-reauth-python = %{version}-%{release}
+Requires: google-reauth-python3 = %{version}-%{release}
 Requires: oauth2client
 BuildRequires : buildreq-distutils3
 
@@ -35,7 +35,7 @@ license components for the google-reauth package.
 %package python
 Summary: python components for the google-reauth package.
 Group: Default
-Requires: google-reauth-python3
+Requires: google-reauth-python3 = %{version}-%{release}
 
 %description python
 python components for the google-reauth package.
@@ -58,14 +58,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536549987
-python3 setup.py build -b py3
+export SOURCE_DATE_EPOCH=1546097388
+export MAKEFLAGS=%{?_smp_mflags}
+python3 setup.py build
 
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/google-reauth
-cp LICENSE %{buildroot}/usr/share/doc/google-reauth/LICENSE
-python3 -tt setup.py build -b py3 install --root=%{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/google-reauth
+cp LICENSE %{buildroot}/usr/share/package-licenses/google-reauth/LICENSE
+python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -74,8 +75,8 @@ echo ----[ mark ]----
 %defattr(-,root,root,-)
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/google-reauth/LICENSE
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/google-reauth/LICENSE
 
 %files python
 %defattr(-,root,root,-)
