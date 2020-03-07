@@ -4,7 +4,7 @@
 #
 Name     : google-reauth
 Version  : 0.1.0
-Release  : 10
+Release  : 11
 URL      : https://files.pythonhosted.org/packages/88/a9/68e764f071560fc947ce23944b10b2d7e8dc4ae0cf853565ef4e1e47f69e/google-reauth-0.1.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/88/a9/68e764f071560fc947ce23944b10b2d7e8dc4ae0cf853565ef4e1e47f69e/google-reauth-0.1.0.tar.gz
 Summary  : Google Reauth Library
@@ -20,12 +20,11 @@ BuildRequires : oauth2client
 BuildRequires : pyu2f
 
 %description
+Google Reauth Python Library
 ============================
-        
-        |build| |docs| |pypi|
-        
-        This library provides Reauth support to Google's authentication libraries for
-        Python. Reauth allows using two-factor authentication for end-user credentials.
+|build| |docs| |pypi|
+This library provides Reauth support to Google's authentication libraries for
+Python. Reauth allows using two-factor authentication for end-user credentials.
 
 %package license
 Summary: license components for the google-reauth package.
@@ -64,7 +63,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583535738
+export SOURCE_DATE_EPOCH=1583539460
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
